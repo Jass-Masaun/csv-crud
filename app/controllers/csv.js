@@ -19,7 +19,7 @@ const createRecord = async (req, res, next) => {
 
     writeCSV(data);
 
-    const response = new HttpSuccess("Record stored", null, 201);
+    const response = new HttpSuccess("Record stored", newData, 201);
     res.status(response.status_code).json(response);
   } catch (error) {
     next(error);
@@ -72,7 +72,14 @@ const updateExistingRecord = async (req, res, next) => {
     data[index] = { ...data[index], ...updatedData };
     writeCSV(data);
 
-    const response = new HttpSuccess("Record updated", null, 200);
+    const response = new HttpSuccess(
+      "Record updated",
+      {
+        id,
+        ...updatedData,
+      },
+      200
+    );
     res.status(response.status_code).json(response);
   } catch (error) {
     next(error);

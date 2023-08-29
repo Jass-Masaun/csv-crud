@@ -10,9 +10,12 @@ const createRecordCsv = Joi.object({
     })
     .required(),
   age: Joi.string().required(),
-  date_of_birth: Joi.string()
-    .pattern(/^([0-2][0-9]|3[0-1])-(0[1-9]|1[0-2])-\d{4}$/)
-    .message("Date of birth must be in the format DD-MM-YYYY")
+  date_of_birth: Joi.date()
+    .iso()
+    .max("now")
+    .message(
+      "Date of birth must be a valid ISO date and cannot be in the future"
+    )
     .required(),
 });
 
