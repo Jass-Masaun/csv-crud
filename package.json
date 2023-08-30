@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha test/**/*.test.js --timeout 30000 --exit",
-    "dev": "concurrently \"nodemon node server\" \"npm run client\"",
+    "dev": "concurrently \"nodemon node server.js\" \"npm run client\"",
     "start": "node server.js",
     "server": "nodemon node server.js",
     "client": "cd client && npm start"
