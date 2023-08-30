@@ -44,14 +44,6 @@ const Form = ({ closeForm, addUserData, editedUserData, updateUserData }) => {
     };
 
     submitResponse();
-    // if (editedUserData) {
-    //   // Logic to edit existing user data
-    //   // You can find the index of the user data in the array and update it
-    //   // Then call a function to update the parent component's user data
-    // } else {
-    //   // Logic to add new user data
-    //
-    // }
   };
 
   return (
