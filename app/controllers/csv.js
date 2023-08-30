@@ -60,7 +60,7 @@ const updateExistingRecord = async (req, res, next) => {
   try {
     const { id } = req.query;
     const updatedData = req.body;
-
+    console.log(updatedData);
     const data = readCSV();
     const index = data.findIndex((entry) => entry.id === id);
 
@@ -69,13 +69,16 @@ const updateExistingRecord = async (req, res, next) => {
       throw new HttpError("Record not found", name, [], code);
     }
 
-    data[index] = { ...data[index], ...updatedData };
+    const dataToUpdate = { ...data[index], ...updatedData };
+
+    data[index] = dataToUpdate;
     writeCSV(data);
 
     const response = new HttpSuccess(
       "Record updated",
       {
         id,
+        ...dataToUpdate,
         ...updatedData,
       },
       200
@@ -101,7 +104,7 @@ const deleteRecord = async (req, res, next) => {
     data.splice(index, 1)[0];
     writeCSV(data);
 
-    const response = new HttpSuccess("Record daleted", null, 200);
+    const response = new HttpSuccess("Record deleted", null, 200);
     res.status(response.status_code).json(response);
   } catch (error) {
     next(error);

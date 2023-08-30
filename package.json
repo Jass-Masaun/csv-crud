@@ -4,8 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon node server.js"
+    "test": "mocha test/**/*.test.js --timeout 30000 --exit",
+    "dev": "concurrently \"nodemon node server\" \"npm run client\"",
+    "start": "node server.js",
+    "server": "nodemon node server.js",
+    "client": "cd client && npm start"
   },
   "repository": {
     "type": "git",
@@ -23,5 +26,12 @@
     "express": "^4.18.2",
     "joi": "^17.10.0",
     "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "chai": "^4.3.8",
+    "chai-http": "^4.4.0",
+    "concurrently": "^8.2.1",
+    "mocha": "^10.2.0",
+    "mocha-bootstrap": "^1.0.4"
   }
 }

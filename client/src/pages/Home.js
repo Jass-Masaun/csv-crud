@@ -80,12 +80,12 @@ const Home = () => {
         <tbody>
           {userData.map((data, index) => (
             <tr key={index} className="hover:bg-gray-100">
-              <td className="border p-2">{data.first_name}</td>
-              <td className="border p-2">{data.last_name}</td>
-              <td className="border p-2">{data.email}</td>
-              <td className="border p-2">{data.age}</td>
-              <td className="border p-2">{data.date_of_birth}</td>
-              <td className="border p-2">
+              <td className="border p-2 text-center">{data.first_name}</td>
+              <td className="border p-2 text-center">{data.last_name}</td>
+              <td className="border p-2 text-center">{data.email}</td>
+              <td className="border p-2 text-center">{data.age}</td>
+              <td className="border p-2 text-center">{data.date_of_birth}</td>
+              <td className="border p-2 text-center">
                 <button
                   className="text-blue-500 hover:underline mr-2"
                   onClick={() => editUserData(index)}
